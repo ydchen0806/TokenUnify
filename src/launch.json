@@ -1,0 +1,34 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: ddp",
+            "type": "python",
+            "request": "launch",
+            "program": "/usr/local/lib/python3.8/dist-packages/torch/distributed/launch.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--nproc_per_node=8",
+                "/data/ydchen/VLP/EM_Mamba/EM_mamba_seg/main_finetune.py",
+                "--batch_size=9",
+                "--warmup_epochs=0",
+                "--model=mae_vit_base_patch16_EM",
+                "--epochs=400",
+            ],
+            "env": {
+                "NCCL_SOCKET_IFNAME": "eth0"
+            }
+        },
+        {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
