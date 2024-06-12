@@ -1,4 +1,4 @@
-# TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction
+# TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction (Under review)
 This repository contains the official implementation of the paper **TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction**. It provides all the experimental settings and source code used in our research. The paper also includes theoretical proofs. For more details, please refer to our original paper.
 
 <div style="text-align: center;">
@@ -53,7 +53,7 @@ To use this dataset, please refer to the license provided [here](#license-import
 - **Volume Size:** 1250 x 1250 x 125
 - **Annotation Completion Dates:** 2023.12.11 (w4), 2024.04.12 (w36)
 - **Authors:** Anonymous authors
-- **Copyright Holder:** Institute of Artificial Intelligence, Hefei Comprehensive National Science Center
+- **Copyright Holder:** Anonymous Agency
 
 ### **Acknowledgment Norms**
 
