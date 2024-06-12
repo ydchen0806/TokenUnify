@@ -22,7 +22,7 @@ The datasets required for pre-training and segmentation are as follows:
 
 | Dataset Type          | Dataset Name           | Description                              | URL                                           |
 |-----------------------|------------------------|------------------------------------------|-----------------------------------------------|
-| Pre-training Dataset  | Region of FAFB Dataset | Fly brain dataset for pre-training       | [EM Pretrain Dataset](https://huggingface.co/datasets/cyd0806/EM_pretrain_data/tree/main)  |
+| Pre-training Dataset  | Large EM Datasets of Various Brain Regions | Fly brain dataset for pre-training       | [EM Pretrain Dataset](https://huggingface.co/datasets/cyd0806/EM_pretrain_data/tree/main)  |
 | Segmentation Dataset  | CREMI Dataset          | Challenge on circuit reconstruction datasets| [CREMI Dataset](https://cremi.org/)           |
 | Segmentation Dataset  | [AC3/AC4 ](https://software.rc.fas.harvard.edu/lichtman/vast/AC3AC4Package.zip) | AC3/AC4 Dataset | [Mouse Brain GoogleDrive](https://drive.google.com/drive/folders/1JAdoKchlWrHnbTXvnFn6pWWwx6VIiMH3?usp=sharing) |
 | Segmentation Dataset  | MEC | A new neuron segmentation dataset | Rat Brain (Published after paper acceptance) |
