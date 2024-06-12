@@ -67,11 +67,34 @@ To use this dataset, please refer to the license provided [here](#license-import
 
 ## Usage Guide
 
-### 1. Pretraining
+### 1. Pretraining （Pretraining TokenUnify with 8 nodes）
 ```
-python pretrain.py -c pretraining_all -m train
+bash src/run_mamba_mae_AR.sh
 ```
-### 2. Finetuning
+### 2. Pretraining （Pretraining TokenUnify with 32 nodes）
 ```
-python finetune.py -c seg_3d -m train -w [your pretrained path]
+bash src/launch_huge.sh
 ```
+### 3. Finetuning
+```
+bash src/run_mamba_seg.sh
+```
+
+## Results
+### 1. Scaling law of TokenUnify
+<div style="text-align: center;">
+  <img src="results1.png" alt="Scaling Law of TokenUnify" width="80%" />
+  <p><b>Figure 3:</b> Scaling Law of TokenUnify</p>
+</div>
+
+### 2. Main Results
+<div style="text-align: center;">
+  <img src="results2.png" alt="Main Results of TokenUnify" width="80%" />
+  <p><b>Figure 4:</b> Main Results of TokenUnify</p>
+</div>
+
+### 3. Visual Results
+<div style="text-align: center;">
+  <img src="visual_results.png" alt="Visual Results of TokenUnify" width="80%" />
+  <p><b>Figure 4:</b> Visual Results of TokenUnify</p>
+</div>
