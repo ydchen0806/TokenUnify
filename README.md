@@ -84,17 +84,25 @@ bash src/run_mamba_seg.sh
 ### 1. Scaling law of TokenUnify
 <div style="text-align: center;">
   <img src="results1.png" alt="Scaling Law of TokenUnify" width="80%" />
-  <p><b>Figure 3:</b> Scaling Law of TokenUnify</p>
 </div>
 
 ### 2. Main Results
 <div style="text-align: center;">
   <img src="results2.png" alt="Main Results of TokenUnify" width="80%" />
-  <p><b>Figure 4:</b> Main Results of TokenUnify</p>
 </div>
 
 ### 3. Visual Results
 <div style="text-align: center;">
   <img src="visual_results.png" alt="Visual Results of TokenUnify" width="80%" />
-  <p><b>Figure 4:</b> Visual Results of TokenUnify</p>
 </div>
+
+# To-Do List
+
+## Completed Tasks
+- [x] Open-sourced the core code
+- [x] Wrote the README for code usage
+- [x] Open-sourced the pre-training dataset
+
+## Pending Tasks
+- [ ] Upload the pre-trained weights
+- [ ] Release the private dataset MEC
