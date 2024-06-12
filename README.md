@@ -104,3 +104,6 @@ bash src/run_mamba_seg.sh
 ## Pending Tasks
 - [ ] Upload the pre-trained weights
 - [ ] Release the private dataset MEC
+
+## Cite
+If you find this code or dataset useful in your research, please consider citing our paper:
