@@ -1,0 +1,7 @@
+causal_conv1d
+einops
+ninja
+packaging
+torch
+transformers
+triton
