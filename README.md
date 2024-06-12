@@ -1,3 +1,16 @@
+# TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction
+This repository contains the official implementation of the paper **TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction**.
+
+<div style="text-align: center;">
+  <img src="framework1.png" alt="The pipeline of our proposed methods" width="80%" />
+  <p><b>Figure 1:</b> The pipeline of our proposed methods</p>
+</div>
+
+<div style="text-align: center;">
+  <img src="framework2.png" alt="The network details of our proposed methods" width="80%" />
+  <p><b>Figure 2:</b> The framework of our proposed decision module</p>
+</div>
+
 ## Environment Setup
 
 To streamline the setup process, we provide a Docker image that can be used to set up the environment with a single command. The Docker image is available at:
