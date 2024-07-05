@@ -22,7 +22,7 @@ This repository contains the official implementation of the paper **[TokenUnify:
 To streamline the setup process, we provide a Docker image that can be used to set up the environment with a single command. The Docker image is available at:
 
 ```sh
-docker pull registry.cn-hangzhou.aliyuncs.com/cyd_dl/monai-vit:v26
+sudo docker pull registry.cn-hangzhou.aliyuncs.com/mybitahub/large_model:mamba0224_ydchen
 ```
 ## Dataset Download
 
