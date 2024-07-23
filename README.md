@@ -112,6 +112,8 @@ bash src/run_mamba_seg.sh
 ## Cite
 If you find this code or dataset useful in your research, please consider citing our paper:
 
+<!--
 ## ✨Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=ydchen0806/TokenUnify&type=Date)](https://star-history.com/#ydchen0806/TokenUnify&Date)
+-->
