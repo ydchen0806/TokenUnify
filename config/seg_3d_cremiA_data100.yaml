@@ -1,0 +1,75 @@
+NAME: 'seg_3d_cremiA_data100'
+
+MODEL:
+    model_type: 'superhuman'  # 'mala' or 'superhuman'
+    input_nc: 1
+    output_nc: 3
+    if_sigmoid: True
+    # for 'mala':
+    init_mode_mala: 'kaiming'
+    # for 'superhuman':
+    if_skip: 'False'
+    filters: 
+        - 28
+        - 36
+        - 48
+        - 64
+        - 80
+    upsample_mode: 'bilinear'  # 'bilinear', 'nearest', 'transpose', 'transposeS'
+    decode_ratio: 1
+    merge_mode: 'add'  # 'add', 'cat'
+    pad_mode: 'zero'  # 'zero', 'replicate'
+    bn_mode: 'async'  # 'sync', 'async'
+    relu_mode: 'elu'  # 'elu', 'relu', 'leaky'
+    init_mode: 'kaiming_normal'  # 'kaiming_normal', 'kaiming_uniform', 'xavier_normal', 'xavier_uniform'
+    
+    pre_train: False
+    trained_gpus: 1
+    pre_train_mode: 'finetune'  # 'finetune', 'extract_feature'
+    trained_model_name: '2020-12-21--08-27-49_ssl_suhu_noskip_mse_lr0001_snemi3d_ulb5'
+    trained_model_id: 400000
+
+TRAIN:
+    resume: False
+    if_valid: True
+    if_seg: True
+    cache_path: '../caches/'
+    save_path: '../models/'
+    pad: 0
+    loss_func: 'WeightedBCELoss'   # 'WeightedBCELoss', 'BCELoss'
+
+    opt_type: 'adam'
+    total_iters: 200000
+    warmup_iters: 0
+    base_lr: 0.0001
+    end_lr: 0.0001
+    display_freq: 100
+    valid_freq: 1000
+    save_freq: 1000
+    decay_iters: 100000
+    weight_decay: ~
+    power: 1.5
+
+    batch_size: 4
+    num_workers: 4
+    if_cuda: True
+
+    random_seed: 555  # -1 is none
+
+DATA:
+    dataset_name: 'cremiA'  # 'snemi3d-ac3', 'cremi-A', 'cremi'
+    train_split: 100
+    test_split: 25
+    data_folder: '../data'
+    padding: 20
+    shift_channels: ~
+    if_dilate: True
+    if_scale_aug: False
+    if_filp_aug: True
+    if_rotation_aug: True
+    if_intensity_aug: True
+    if_elastic_aug: True
+
+TEST:
+    pad: 0
+    model_name: '2021-04-24--13-18-01_seg_3d_ac4_data80'
