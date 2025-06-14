@@ -1,4 +1,5 @@
-# TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction (Under review)
+# TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction
+
 This repository contains the official implementation of the paper **[TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction](https://arxiv.org/pdf/2405.16847)**. It provides all the experimental settings and source code used in our research. The paper also includes theoretical proofs. For more details, please refer to our original paper.
 
 <div style="text-align: center;">
@@ -9,35 +10,86 @@ This repository contains the official implementation of the paper **[TokenUnify:
   <img src="framework2.png" alt="The network details of our proposed methods" width="80%" />
 </div>
 
+## 📰 News
 
-<!--
-<details>
-  <summary>Visitor Count</summary>
-  <img src="https://komarev.com/ghpvc/?username=ydchen0806&repo=TokenUnify" alt="Visitor Count">
-</details>
--->
+- **[2024.12] 🎉 Code and pre-training dataset released!** Core implementation and pre-training weights are now available.
+- **[2024.12] 📊 Datasets released!** Pre-training dataset available on [HuggingFace](https://huggingface.co/datasets/cyd0806/EM_pretrain_data).
+- **[2024.12] 🔧 Pre-trained weights released!** Model weights available at [HuggingFace](https://huggingface.co/cyd0806/TokenUnify).
+- **[2024.05] 📝 Paper released!** TokenUnify paper published on [arXiv](https://arxiv.org/pdf/2405.16847).
 
-## Environment Setup
+## 🚀 Overview
 
-To streamline the setup process, we provide a Docker image that can be used to set up the environment with a single command. The Docker image is available at:
+TokenUnify introduces a novel autoregressive visual pre-training method that integrates three distinct prediction tasks:
+- **Random Token Prediction**: Captures global contextual information
+- **Next Token Prediction**: Maintains sequential dependencies  
+- **Next-All Token Prediction**: Mitigates cumulative errors in autoregression
 
-```sh
+Our approach demonstrates superior scaling laws and achieves **45% improvement** in neuron segmentation performance while reducing computational complexity through the Mamba architecture.
+
+## 🛠️ Environment Setup
+
+To streamline the setup process, we provide a Docker image that can be used to set up the environment with a single command:
+
+```bash
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/mybitahub/large_model:mamba0224_ydchen
 ```
-## Dataset Download
+
+## 📦 Dataset Download
 
 The datasets required for pre-training and segmentation are as follows:
 
 | Dataset Type          | Dataset Name           | Description                              | URL                                           |
 |-----------------------|------------------------|------------------------------------------|-----------------------------------------------|
-| Pre-training Dataset  | Large EM Datasets of Various Brain Regions | Fly brain dataset for pre-training       | [EM Pretrain Dataset](https://huggingface.co/datasets/cyd0806/EM_pretrain_data/tree/main)  |
-| Segmentation Dataset  | CREMI Dataset          | Challenge on circuit reconstruction datasets| [CREMI Dataset](https://cremi.org/)           |
-| Segmentation Dataset  | [AC3/AC4 ](https://software.rc.fas.harvard.edu/lichtman/vast/AC3AC4Package.zip) | AC3/AC4 Dataset | [Mouse Brain GoogleDrive](https://drive.google.com/drive/folders/1JAdoKchlWrHnbTXvnFn6pWWwx6VIiMH3?usp=sharing) |
-| Segmentation Dataset  | MEC | A new neuron segmentation dataset | Rat Brain (Published after paper acceptance) |
+| Pre-training Dataset  | Large EM Datasets | Various brain regions for pre-training | [🤗 EM Pretrain Dataset](https://huggingface.co/datasets/cyd0806/EM_pretrain_data) |
+| Segmentation Dataset  | CREMI Dataset          | Challenge on circuit reconstruction | [CREMI Dataset](https://cremi.org/) |
+| Segmentation Dataset  | AC3/AC4 | Mouse brain cortex dataset | [Google Drive](https://drive.google.com/drive/folders/1JAdoKchlWrHnbTXvnFn6pWWwx6VIiMH3?usp=sharing) |
+| Segmentation Dataset  | MEC | High-resolution neuron segmentation | *Coming soon* |
 
-To use this dataset, please refer to the license provided [here](#license-important-).
+## 🏋️ Model Weights
 
-# License (Important !!!)
+Pre-trained TokenUnify weights are now available:
+
+| Model | Parameters | Dataset | URL |
+|-------|------------|---------|-----|
+| TokenUnify-Base | 28M | EM Multi-dataset | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify) |
+| TokenUnify-Large | 500M | EM Multi-dataset | *Coming soon* |
+| TokenUnify-Huge | 1B | EM Multi-dataset | *Coming soon* |
+
+## 🔥 Usage Guide
+
+### 1. Pre-training (8 nodes)
+```bash
+bash src/run_mamba_mae_AR.sh
+```
+
+### 2. Pre-training (32 nodes - Large scale)
+```bash
+bash src/launch_huge.sh
+```
+
+### 3. Fine-tuning
+```bash
+bash src/run_mamba_seg.sh
+```
+
+## 📊 Results
+
+### 1. Scaling Law of TokenUnify
+<div style="text-align: center;">
+  <img src="results1.png" alt="Scaling Law of TokenUnify" width="80%" />
+</div>
+
+### 2. Main Results
+<div style="text-align: center;">
+  <img src="results2.png" alt="Main Results of TokenUnify" width="80%" />
+</div>
+
+### 3. Visual Results
+<div style="text-align: center;">
+  <img src="visual_results.png" alt="Visual Results of TokenUnify" width="80%" />
+</div>
+
+## 📄 License
 
 <details>
 <summary>Usage Notes</summary>
@@ -70,50 +122,37 @@ To use this dataset, please refer to the license provided [here](#license-import
 
 </details>
 
+## ✅ To-Do List
 
-## Usage Guide
+- [x] 📝 Open-sourced the core code
+- [x] 📖 Wrote the README for code usage  
+- [x] 🗂️ Open-sourced the pre-training dataset
+- [x] ⚖️ Upload the pre-trained weights
+- [ ] 🧠 Release the private dataset MEC
+- [ ] 🏆 Release evaluation scripts and benchmarks
+- [ ] 🔧 Add support for natural image datasets
 
-### 1. Pretraining （Pretraining TokenUnify with 8 nodes）
-```
-bash src/run_mamba_mae_AR.sh
-```
-### 2. Pretraining （Pretraining TokenUnify with 32 nodes）
-```
-bash src/launch_huge.sh
-```
-### 3. Finetuning
-```
-bash src/run_mamba_seg.sh
-```
+## 📝 Citation
 
-## Results
-### 1. Scaling law of TokenUnify
-<div style="text-align: center;">
-  <img src="results1.png" alt="Scaling Law of TokenUnify" width="80%" />
-</div>
-
-### 2. Main Results
-<div style="text-align: center;">
-  <img src="results2.png" alt="Main Results of TokenUnify" width="80%" />
-</div>
-
-### 3. Visual Results
-<div style="text-align: center;">
-  <img src="visual_results.png" alt="Visual Results of TokenUnify" width="80%" />
-</div>
-
-# To-Do List
-- [x] Open-sourced the core code
-- [x] Wrote the README for code usage
-- [x] Open-sourced the pre-training dataset
-- [ ] Upload the pre-trained weights
-- [ ] Release the private dataset MEC
-
-## Cite
 If you find this code or dataset useful in your research, please consider citing our paper:
 
-<!--
-## ✨Star History
+```bibtex
+@article{chen2024tokenunify,
+  title={TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction},
+  author={Chen, Yinda and Shi, Haoyuan and Liu, Xiaoyu and Shi, Te and Zhang, RuoBing and Liu, Dong and Xiong, Zhiwei and Wu, Feng},
+  journal={arXiv preprint arXiv:2405.16847},
+  year={2024}
+}
+```
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ydchen0806/TokenUnify&type=Date)](https://star-history.com/#ydchen0806/TokenUnify&Date)
--->
+## 🤝 Contributing
+
+We welcome contributions to improve TokenUnify! Please feel free to submit issues and pull requests.
+
+## 📧 Contact
+
+For questions or issues, please contact: `cyd0806@mail.ustc.edu.cn`
+
+---
+
+⭐ **If you find this work helpful, please consider giving us a star!** ⭐
