@@ -52,8 +52,8 @@ Pre-trained TokenUnify weights are now available:
 | Model | Parameters | Dataset | URL |
 |-------|------------|---------|-----|
 | TokenUnify-Base | 28M | EM Multi-dataset | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify) |
-| TokenUnify-Large | 500M | EM Multi-dataset | *Coming soon* |
-| TokenUnify-Huge | 1B | EM Multi-dataset | *Coming soon* |
+| TokenUnify-Large | 500M | EM Multi-dataset | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify) |
+| TokenUnify-Huge | 1B | EM Multi-dataset | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify) |
 
 ## 🔥 Usage Guide
 
