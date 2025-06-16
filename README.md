@@ -1,34 +1,37 @@
 # TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction
 
-This repository contains the official implementation of the paper **[TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction](https://arxiv.org/pdf/2405.16847)**. It provides all the experimental settings and source code used in our research. The paper also includes theoretical proofs. For more details, please refer to our original paper.
+This repository contains the official implementation of the paper **[TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction](https://arxiv.org/pdf/2405.16847)**. It includes experimental settings, source code, and theoretical proofs. For details, please refer to the [original paper](https://arxiv.org/pdf/2405.16847).
 
 <div style="text-align: center;">
-  <img src="framework1.png" alt="The pipeline of our proposed methods" width="80%" />
+  <img src="framework1.png" alt="Pipeline of TokenUnify" width="80%" />
+  <p><i>Pipeline of our proposed methods</i></p>
 </div>
 
 <div style="text-align: center;">
-  <img src="framework2.png" alt="The network details of our proposed methods" width="80%" />
+  <img src="framework2.png" alt="Network details of TokenUnify" width="80%" />
+  <p><i>Network details of our proposed methods</i></p>
 </div>
 
 ## 📰 News
 
-- **[2024.12] 🎉 Code and pre-training dataset released!** Core implementation and pre-training weights are now available.
+- **[2025.06] 📊 MEC dataset released!** Wafer (MEC) dataset available on [HuggingFace](https://huggingface.co/datasets/cyd0806/wafer_EM).
+- **[2025.06] 🔧 Pre-trained weights updated!** Robust initialization weights (pre-trained, not fine-tuned) available in the [Pretrained_weights folder](https://huggingface.co/cyd0806/TokenUnify/tree/main/Pretrained_weights) on HuggingFace.
+- **[2024.12] 🎉 Code and pre-training dataset released!** Core implementation and pre-training weights released.
 - **[2024.12] 📊 Datasets released!** Pre-training dataset available on [HuggingFace](https://huggingface.co/datasets/cyd0806/EM_pretrain_data).
-- **[2024.12] 🔧 Pre-trained weights released!** Model weights available at [HuggingFace](https://huggingface.co/cyd0806/TokenUnify).
 - **[2024.05] 📝 Paper released!** TokenUnify paper published on [arXiv](https://arxiv.org/pdf/2405.16847).
 
 ## 🚀 Overview
 
-TokenUnify introduces a novel autoregressive visual pre-training method that integrates three distinct prediction tasks:
-- **Random Token Prediction**: Captures global contextual information
-- **Next Token Prediction**: Maintains sequential dependencies  
-- **Next-All Token Prediction**: Mitigates cumulative errors in autoregression
+TokenUnify introduces a novel autoregressive visual pre-training method combining three prediction tasks:
+- **Random Token Prediction**: Captures global contextual information.
+- **Next Token Prediction**: Maintains sequential dependencies.
+- **Next-All Token Prediction**: Mitigates cumulative errors in autoregression.
 
-Our approach demonstrates superior scaling laws and achieves **45% improvement** in neuron segmentation performance while reducing computational complexity through the Mamba architecture.
+Leveraging the Mamba architecture, TokenUnify achieves **45% improvement** in neuron segmentation performance with reduced computational complexity and demonstrates superior scaling laws.
 
 ## 🛠️ Environment Setup
 
-To streamline the setup process, we provide a Docker image that can be used to set up the environment with a single command:
+Set up the environment using our Docker image:
 
 ```bash
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/mybitahub/large_model:mamba0224_ydchen
@@ -36,24 +39,35 @@ sudo docker pull registry.cn-hangzhou.aliyuncs.com/mybitahub/large_model:mamba02
 
 ## 📦 Dataset Download
 
-The datasets required for pre-training and segmentation are as follows:
+Datasets for pre-training and segmentation:
 
 | Dataset Type          | Dataset Name           | Description                              | URL                                           |
 |-----------------------|------------------------|------------------------------------------|-----------------------------------------------|
-| Pre-training Dataset  | Large EM Datasets | Various brain regions for pre-training | [🤗 EM Pretrain Dataset](https://huggingface.co/datasets/cyd0806/EM_pretrain_data) |
-| Segmentation Dataset  | CREMI Dataset          | Challenge on circuit reconstruction | [CREMI Dataset](https://cremi.org/) |
-| Segmentation Dataset  | AC3/AC4 | Mouse brain cortex dataset | [Google Drive](https://drive.google.com/drive/folders/1JAdoKchlWrHnbTXvnFn6pWWwx6VIiMH3?usp=sharing) |
-| Segmentation Dataset  | MEC | High-resolution neuron segmentation | *Coming soon* |
+| Pre-training Dataset  | Large EM Datasets      | Various brain regions for pre-training   | [🤗 EM Pretrain Dataset](https://huggingface.co/datasets/cyd0806/EM_pretrain_data) |
+| Segmentation Dataset  | Wafer (MEC)            | High-resolution neuron segmentation      | [🤗 Wafer_EM Dataset](https://huggingface.co/datasets/cyd0806/wafer_EM) |
+| Segmentation Dataset  | CREMI Dataset          | Circuit reconstruction challenge         | [CREMI Dataset](https://cremi.org/) |
+| Segmentation Dataset  | AC3/AC4                | Mouse brain cortex dataset               | [Google Drive](https://drive.google.com/drive/folders/1JAdoKchlWrHnbTXvnF6pWWwx6VIiMH3?usp=sharing) |
 
 ## 🏋️ Model Weights
 
-Pre-trained TokenUnify weights are now available:
+Pre-trained (robust initialization, not fine-tuned) TokenUnify weights are available in the [Pretrained_weights folder](https://huggingface.co/cyd0806/TokenUnify/tree/main/Pretrained_weights):
 
-| Model | Parameters | Dataset | URL |
-|-------|------------|---------|-----|
-| TokenUnify-Base | 28M | EM Multi-dataset | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify) |
-| TokenUnify-Large | 500M | EM Multi-dataset | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify) |
-| TokenUnify-Huge | 1B | EM Multi-dataset | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify) |
+| Model                  | Parameters | Dataset           | URL                                                                 |
+|------------------------|------------|-------------------|----------------------------------------------------------------------|
+| TokenUnify_pretrained-100M | 100M   | EM Multi-dataset  | [🤗 Pretrained_weights](https://huggingface.co/cyd0806/TokenUnify/tree/main/Pretrained_weights) |
+| TokenUnify_pretrained-200M | 200M   | EM Multi-dataset  | [🤗 Pretrained_weights](https://huggingface.co/cyd0806/TokenUnify/tree/main/Pretrained_weights) |
+| TokenUnify_pretrained-500M | 500M   | EM Multi-dataset  | [🤗 Pretrained_weights](https://huggingface.co/cyd0806/TokenUnify/tree/main/Pretrained_weights) |
+| TokenUnify_pretrained-1B   | 1B     | EM Multi-dataset  | [🤗 Pretrained_weights](https://huggingface.co/cyd0806/TokenUnify/tree/main/Pretrained_weights) |
+
+Fine-tuned weights are also available:
+
+| Model                  | Parameters | Dataset           | URL                                                                 |
+|------------------------|------------|-------------------|----------------------------------------------------------------------|
+| TokenUnify-100M        | 100M       | EM Multi-dataset  | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify)          |
+| TokenUnify-200M        | 200M       | EM Multi-dataset  | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify)          |
+| TokenUnify-500M        | 500M       | EM Multi-dataset  | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify)          |
+| TokenUnify-1B          | 1B         | EM Multi-dataset  | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify)          |
+| superhuman             | -          | EM Multi-dataset  | [🤗 HuggingFace](https://huggingface.co/cyd0806/TokenUnify)          |
 
 ## 🔥 Usage Guide
 
@@ -74,7 +88,7 @@ bash src/run_mamba_seg.sh
 
 ## 📊 Results
 
-### 1. Scaling Law of TokenUnify
+### 1. Scaling Law
 <div style="text-align: center;">
   <img src="results1.png" alt="Scaling Law of TokenUnify" width="80%" />
 </div>
@@ -124,17 +138,17 @@ bash src/run_mamba_seg.sh
 
 ## ✅ To-Do List
 
-- [x] 📝 Open-sourced the core code
-- [x] 📖 Wrote the README for code usage  
-- [x] 🗂️ Open-sourced the pre-training dataset
-- [x] ⚖️ Upload the pre-trained weights
-- [ ] 🧠 Release the private dataset MEC
+- [x] 📝 Open-source core code
+- [x] 📖 Write README for code usage
+- [x] 🗂️ Open-source pre-training dataset
+- [x] ⚖️ Upload pre-trained and fine-tuned weights
+- [x] 🧠 Release Wafer (MEC) dataset
 - [ ] 🏆 Release evaluation scripts and benchmarks
 - [ ] 🔧 Add support for natural image datasets
 
 ## 📝 Citation
 
-If you find this code or dataset useful in your research, please consider citing our paper:
+If you find this code or dataset useful, please cite:
 
 ```bibtex
 @article{chen2024tokenunify,
@@ -147,12 +161,12 @@ If you find this code or dataset useful in your research, please consider citing
 
 ## 🤝 Contributing
 
-We welcome contributions to improve TokenUnify! Please feel free to submit issues and pull requests.
+We welcome contributions to improve TokenUnify! Please submit issues and pull requests.
 
 ## 📧 Contact
 
-For questions or issues, please contact: `cyd0806@mail.ustc.edu.cn`
+For questions, contact: `cyd0806@mail.ustc.edu.cn`
 
 ---
 
-⭐ **If you find this work helpful, please consider giving us a star!** ⭐
+⭐ **If you find this work helpful, please give us a star!** ⭐
