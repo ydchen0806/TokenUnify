@@ -14,6 +14,7 @@ This repository contains the official implementation of the paper **[TokenUnify:
 
 ## 📰 News
 
+- **[2025.06] 🎉 TokenUnify** was accepted by ICCV 2025, looking forward to meeting you in Hawaii.
 - **[2025.06] 📊 MEC dataset released!** Wafer (MEC) dataset available on [HuggingFace](https://huggingface.co/datasets/cyd0806/wafer_EM).
 - **[2025.06] 🔧 Pre-trained weights updated!** Robust initialization weights (pre-trained, not fine-tuned) available in the [Pretrained_weights folder](https://huggingface.co/cyd0806/TokenUnify/tree/main/Pretrained_weights) on HuggingFace.
 - **[2024.12] 🎉 Code and pre-training dataset released!** Core implementation and pre-training weights released.
