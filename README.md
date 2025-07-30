@@ -1,6 +1,6 @@
-# TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction
+# TokenUnify: Scaling Up Autoregressive Pretraining for Neuron Segmentation
 
-This repository contains the official implementation of the paper **[TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction](https://arxiv.org/pdf/2405.16847)**. It includes experimental settings, source code, and theoretical proofs. For details, please refer to the [original paper](https://arxiv.org/pdf/2405.16847).
+This repository contains the official implementation of the paper **[TokenUnify: Scaling Up Autoregressive Pretraining for Neuron Segmentation](https://arxiv.org/pdf/2405.16847)**. It includes experimental settings, source code, and theoretical proofs. For details, please refer to the [original paper](https://arxiv.org/pdf/2405.16847).
 
 <div style="text-align: center;">
   <img src="framework1.png" alt="Pipeline of TokenUnify" width="80%" />
@@ -23,12 +23,13 @@ This repository contains the official implementation of the paper **[TokenUnify:
 
 ## 🚀 Overview
 
-TokenUnify introduces a novel autoregressive visual pre-training method combining three prediction tasks:
-- **Random Token Prediction**: Captures global contextual information.
-- **Next Token Prediction**: Maintains sequential dependencies.
-- **Next-All Token Prediction**: Mitigates cumulative errors in autoregression.
+TokenUnify introduces a novel autoregressive visual pre-training method for neuron segmentation from electron microscopy (EM) volumes. The method tackles the unique challenges of EM data including high noise levels, anisotropic voxel dimensions, and ultra-long spatial dependencies through hierarchical predictive coding that combines three complementary prediction tasks:
 
-Leveraging the Mamba architecture, TokenUnify achieves **45% improvement** in neuron segmentation performance with reduced computational complexity and demonstrates superior scaling laws.
+- **Random Token Prediction**: Captures noise-robust spatial patterns and learns position-invariant local feature detectors.
+- **Next Token Prediction**: Maintains sequential dependencies and captures critical transitional patterns in neuronal morphology.
+- **Next-All Token Prediction**: Models global context and long-range correlations while mitigating cumulative errors in autoregression.
+
+Leveraging the Mamba architecture's linear-time sequence modeling capabilities, TokenUnify achieves **44% improvement** in neuron segmentation performance compared to training from scratch and **25% improvement** over MAE, while demonstrating superior scaling properties and reducing autoregressive error accumulation from O(K) to O(√K) for sequences of length K.
 
 ## 🛠️ Environment Setup
 
@@ -104,6 +105,14 @@ bash src/run_mamba_seg.sh
   <img src="visual_results.png" alt="Visual Results of TokenUnify" width="80%" />
 </div>
 
+## 🔬 Key Technical Contributions
+
+1. **Hierarchical Predictive Coding Framework**: We introduce a unified framework that integrates three distinct visual structure perspectives within a coherent information-theoretic formulation, providing optimal coverage of visual data structure while reducing autoregressive error accumulation from O(K) to O(√K).
+
+2. **Large-Scale EM Dataset**: We construct one of the largest EM neuron segmentation datasets with 1.2 billion finely annotated voxels across six functional brain regions, providing an ideal testbed for long-sequence visual modeling.
+
+3. **Billion-Parameter Mamba Network**: We achieve the first billion-parameter Mamba network for visual autoregression, demonstrating both effectiveness and computational efficiency in processing long-sequence visual data with favorable scaling properties.
+
 ## 📄 License
 
 <details>
@@ -127,13 +136,13 @@ bash src/run_mamba_seg.sh
 - **Resolution:** 8nm x 8nm x 35nm
 - **Volume Size:** 1250 x 1250 x 125
 - **Annotation Completion Dates:** 2023.12.11 (w4), 2024.04.12 (w36)
-- **Authors:** Anonymous authors
-- **Copyright Holder:** Anonymous Agency
+- **Authors:** Yinda Chen, Haoyuan Shi, Xiaoyu Liu, Te Shi, Ruobing Zhang, Dong Liu, Zhiwei Xiong, Feng Wu
+- **Copyright Holder:** Institute of Artificial Intelligence, Hefei Comprehensive National Science Center
 
 ### **Acknowledgment Norms**
 
-- **Chinese Name:** 匿名机构
-- **English Name:** Anonymous Agency
+- **Chinese Name:** 合肥人工智能研究院
+- **English Name:** Institute of Artificial Intelligence, Hefei Comprehensive National Science Center
 
 </details>
 
@@ -152,11 +161,11 @@ bash src/run_mamba_seg.sh
 If you find this code or dataset useful, please cite:
 
 ```bibtex
-@article{chen2024tokenunify,
-  title={TokenUnify: Scalable Autoregressive Visual Pre-training with Mixture Token Prediction},
+@inproceedings{chen2025tokenunify,
+  title={TokenUnify: Scaling Up Autoregressive Pretraining for Neuron Segmentation},
   author={Chen, Yinda and Shi, Haoyuan and Liu, Xiaoyu and Shi, Te and Zhang, RuoBing and Liu, Dong and Xiong, Zhiwei and Wu, Feng},
-  journal={arXiv preprint arXiv:2405.16847},
-  year={2024}
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year={2025}
 }
 ```
 
