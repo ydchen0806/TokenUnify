@@ -1,5 +1,15 @@
 # TokenUnify: Scaling Up Autoregressive Pretraining for Neuron Segmentation
 
+**Yinda Chen¹,²\***, **Haoyuan Shi¹,²\***, **Xiaoyu Liu¹**, **Te Shi²**, **Ruobing Zhang³,²**, **Dong Liu¹**, **Zhiwei Xiong¹,²†**, **Feng Wu¹,²‡**
+
+¹*MoE Key Laboratory of Brain-inspired Intelligent Perception and Cognition, University of Science and Technology of China*  
+²*Institute of Artificial Intelligence, Hefei Comprehensive National Science Center*  
+³*Institute for Brain and Intelligence, Fudan University*
+
+\**Equal Contribution* †*Project Leader* ‡*Corresponding Author*
+
+---
+
 This repository contains the official implementation of the paper **[TokenUnify: Scaling Up Autoregressive Pretraining for Neuron Segmentation](https://arxiv.org/pdf/2405.16847)**. It includes experimental settings, source code, and theoretical proofs. For details, please refer to the [original paper](https://arxiv.org/pdf/2405.16847).
 
 <div style="text-align: center;">
